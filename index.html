@@ -14,6 +14,8 @@
       --border: #ddd;
     }
 
+    
+
     body {
       margin: 0;
       padding: 1.5rem;
@@ -32,23 +34,15 @@
       text-align: center;
     }
 
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
     #searchBox {
       width: 100%;
       padding: 0.75rem 1rem;
       font-size: 1rem;
       border-radius: 8px;
       border: 1px solid var(--border);
+      margin-bottom: 1.25rem;
       background: var(--card-bg);
       color: var(--fg);
-      box-sizing: border-box;
     }
 
     ul {
@@ -61,43 +55,22 @@
       margin: 0.5rem 0;
     }
 
-    .repo-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    a, .missing {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 1.05rem;
       transition: background 0.15s, transform 0.1s;
     }
 
-    .repo-row:hover {
+    a:hover {
       background: var(--accent);
       color: white;
       transform: translateY(-2px);
-    }
-
-    .repo-row a {
-      color: inherit;
-      text-decoration: none;
-      font-size: 1.05rem;
-      flex: 1;
-    }
-
-    .copy-btn {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      font-size: 1.2rem;
-      margin-left: 0.75rem;
-      opacity: 0.7;
-      transition: opacity 0.15s;
-    }
-
-    .copy-btn:hover {
-      opacity: 1;
     }
 
     .missing {
@@ -116,19 +89,13 @@
         li.style.display = text.includes(query) ? '' : 'none';
       });
     }
-
-    function copyLink(url) {
-      navigator.clipboard.writeText(url);
-    }
   </script>
 </head>
 
 <body>
   <h1>Master Index</h1>
 
-  <div class="card">
-    <input id="searchBox" type="text" placeholder="Search repositories…" onkeyup="filterList()">
-  </div>
+  <input id="searchBox" type="text" placeholder="Search repositories…" onkeyup="filterList()">
 
   <ul>    <li class='repo-item'><a href="https://RealmsAU.github.io/Andy-McLaren/">Andy McLaren</a></li>
     <li class='repo-item'><a href="https://RealmsAU.github.io/Jasmine-Adams/">Jasmine Adams</a></li>
