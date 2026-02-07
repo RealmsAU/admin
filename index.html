@@ -3,20 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <title>Master Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    body { font-family: system-ui, sans-serif; margin: 2rem; }
-    h1 { margin-bottom: 1rem; }
-    #searchBox {
-      padding: 0.5rem;
-      width: 300px;
-      font-size: 1rem;
-      margin-bottom: 1rem;
+    :root {
+      --bg: #f7f7f7;
+      --fg: #222;
+      --accent: #0366d6;
+      --card-bg: #fff;
+      --border: #ddd;
     }
-    ul { list-style: none; padding-left: 0; }
-    li { margin: 0.25rem 0; }
-    a { text-decoration: none; color: #0366d6; }
-    a:hover { text-decoration: underline; }
-    .missing { color: #999; font-style: italic; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --fg: #eee;
+        --accent: #4ea3ff;
+        --card-bg: #1a1a1a;
+        --border: #333;
+      }
+    }
+
+    body {
+      margin: 0;
+      padding: 1.5rem;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    #searchBox {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+      background: var(--card-bg);
+      color: var(--fg);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin: 0.5rem 0;
+    }
+
+    a, .missing {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 1.05rem;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .missing {
+      color: #888;
+      font-style: italic;
+    }
   </style>
 
   <script>
@@ -33,9 +101,9 @@
 </head>
 
 <body>
-  <h1>Index</h1>
+  <h1>Master Index</h1>
 
-  <input id="searchBox" type="text" placeholder="Search repos..." onkeyup="filterList()">
+  <input id="searchBox" type="text" placeholder="Search repositories…" onkeyup="filterList()">
 
   <ul>    <li class='repo-item'><a href="https://RealmsAU.github.io/Andy-McLaren/">Andy McLaren</a></li>
     <li class='repo-item'><a href="https://RealmsAU.github.io/Jasmine-Adams/">Jasmine Adams</a></li>
