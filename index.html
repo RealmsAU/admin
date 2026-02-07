@@ -112,6 +112,28 @@
       color: #888;
       font-style: italic;
     }
+
+    /* Toast popup */
+    #toast {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 9999;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-5px);
+    }
   </style>
 
   <script>
@@ -125,8 +147,19 @@
       });
     }
 
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
     function copyLink(url) {
       navigator.clipboard.writeText(url);
+      showToast("Link copied");
     }
   </script>
 </head>
@@ -144,5 +177,8 @@
     <li class='repo-item'><div class='repo-row'><a href="https://RealmsAU.github.io/Neil-Fuller/">Neil-Fuller</a><button class='copy-btn' onclick="copyLink('https://RealmsAU.github.io/Neil-Fuller/')">📋</button></div></li>
     <li class='repo-item'><div class='repo-row'><a href="https://RealmsAU.github.io/Stephen-Webber/">Stephen-Webber</a><button class='copy-btn' onclick="copyLink('https://RealmsAU.github.io/Stephen-Webber/')">📋</button></div></li>
   </ul>
+
+  <div id="toast"></div>
+
 </body>
 </html>
