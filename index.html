@@ -6,21 +6,42 @@
   <style>
     body { font-family: system-ui, sans-serif; margin: 2rem; }
     h1 { margin-bottom: 1rem; }
+    #searchBox {
+      padding: 0.5rem;
+      width: 300px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
     ul { list-style: none; padding-left: 0; }
     li { margin: 0.25rem 0; }
     a { text-decoration: none; color: #0366d6; }
     a:hover { text-decoration: underline; }
     .missing { color: #999; font-style: italic; }
   </style>
+
+  <script>
+    function filterList() {
+      const query = document.getElementById('searchBox').value.toLowerCase();
+      const items = document.querySelectorAll('li.repo-item');
+
+      items.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(query) ? '' : 'none';
+      });
+    }
+  </script>
 </head>
+
 <body>
   <h1>GitHub Repositories</h1>
-  <ul>    <li><a href="https://RealmsAU.github.io/admin/">admin</a></li>
-    <li><a href="https://RealmsAU.github.io/Andy-McLaren/">Andy-McLaren</a></li>
-    <li><a href="https://RealmsAU.github.io/Jasmine-Adams/">Jasmine-Adams</a></li>
-    <li><a href="https://RealmsAU.github.io/Lee-ann-Koncewicz/">Lee-ann-Koncewicz</a></li>
-    <li><a href="https://RealmsAU.github.io/Neil-Fuller/">Neil-Fuller</a></li>
-    <li><a href="https://RealmsAU.github.io/Stephen-Webber/">Stephen-Webber</a></li>
+
+  <input id="searchBox" type="text" placeholder="Search repos..." onkeyup="filterList()">
+
+  <ul>    <li class='repo-item'><a href="https://RealmsAU.github.io/Andy-McLaren/">Andy McLaren</a></li>
+    <li class='repo-item'><a href="https://RealmsAU.github.io/Jasmine-Adams/">Jasmine Adams</a></li>
+    <li class='repo-item'><a href="https://RealmsAU.github.io/Lee-ann-Koncewicz/">Lee ann Koncewicz</a></li>
+    <li class='repo-item'><a href="https://RealmsAU.github.io/Neil-Fuller/">Neil Fuller</a></li>
+    <li class='repo-item'><a href="https://RealmsAU.github.io/Stephen-Webber/">Stephen Webber</a></li>
   </ul>
 </body>
 </html>
